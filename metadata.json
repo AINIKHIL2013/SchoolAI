@@ -1,5 +1,5 @@
 {
-  "name": "ClassLabs AI Summarizer",
+  "name": "Schoollabs ClassAI",
   "description": "An AI-powered web application that transcribes and summarizes uploaded audio files, converts the summary to speech, and includes a helpful chatbot for user questions.",
   "requestFramePermissions": []
 }

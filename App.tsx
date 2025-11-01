@@ -156,7 +156,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-900 font-sans p-4 sm:p-6 lg:p-8 flex flex-col items-center">
       <div className="w-full max-w-4xl mx-auto flex-grow">
         <header className="text-center mb-8">
-          <h1 className={headerStyles}>ClassLabs AI Summarizer</h1>
+          <h1 className={headerStyles}><i>Schoollabs</i> ClassAI</h1>
           <p className={subheaderStyles}>Your AI-powered audio analysis and Q&A assistant</p>
         </header>
 
@@ -176,7 +176,7 @@ const App: React.FC = () => {
         </main>
       </div>
       <footer className="w-full max-w-4xl mx-auto text-gray-500 text-sm py-4 mt-8 flex justify-between items-end">
-        <p className="text-xs">&copy; 2024 ClassLabs AI. All Rights Reserved.</p>
+        <p className="text-xs">&copy; 2025 <i>Schoollabs</i>. Licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-300">GNU GPL v3</a>.</p>
         <div className="text-right">
           <h3 className="font-mono font-bold text-base text-cyan-300 tracking-wider uppercase drop-shadow-[0_0_4px_rgba(0,255,255,0.5)]">
             Contributors
