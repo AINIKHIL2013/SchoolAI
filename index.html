@@ -16,6 +16,14 @@
   }
 }
 </script>
+<script>
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+</script>
 <style>
   @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
@@ -24,9 +32,15 @@
   }
 
   body {
-    background: linear-gradient(-45deg, #f0f9ff, #f3e8ff, #e0f2fe, #f1f5f9);
-    background-size: 400% 400%;
-    animation: gradientAnimation 18s ease infinite;
+    background: linear-gradient(-45deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5, #23a6d5, #23d5ab);
+    background-size: 600% 600%;
+    animation: gradientAnimation 20s ease infinite;
+  }
+
+  .dark body {
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #4a00e0, #8e2de2, #1f1c2c);
+    background-size: 600% 600%;
+    animation: gradientAnimation 20s ease infinite;
   }
   
   /* Custom scrollbar for webkit browsers */
@@ -44,6 +58,16 @@
       background: #0ea5e9; /* sky-500 */
   }
 
+  .dark ::-webkit-scrollbar-track {
+      background: rgba(30, 41, 59, 0.5); /* slate-800 */
+  }
+  .dark ::-webkit-scrollbar-thumb {
+      background: #7c3aed; /* violet-600 */
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+      background: #6d28d9; /* violet-700 */
+  }
+
   /* Chat message animation */
   @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -54,7 +78,7 @@
   }
 </style>
 </head>
-  <body class="text-slate-800">
+  <body class="text-slate-800 dark:text-slate-200">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

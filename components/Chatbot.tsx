@@ -104,22 +104,22 @@ Your primary role is to answer user questions based on the provided transcriptio
     };
     
     return (
-        <div className="w-full max-w-4xl mx-auto h-[70vh] flex flex-col bg-white/60 backdrop-blur-lg rounded-2xl border border-white/50 shadow-2xl shadow-slate-900/10">
+        <div className="w-full max-w-4xl mx-auto h-[70vh] flex flex-col bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl border border-white/50 dark:border-slate-700/50 shadow-2xl shadow-slate-900/10 dark:shadow-black/20">
             <div className="flex-1 p-4 sm:p-6 overflow-y-auto">
                 <div className="space-y-4">
                     {messages.map((msg, index) => (
                         <div key={index} className={`flex items-start gap-3 fade-in ${msg.role === 'user' ? 'justify-end' : ''}`}>
-                            {msg.role === 'model' && <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600" /></div>}
-                            <div className={`px-4 py-3 max-w-sm md:max-w-md lg:max-w-lg shadow-sm ${msg.role === 'user' ? 'bg-violet-500 text-white rounded-2xl rounded-tr-none' : 'bg-slate-100 text-slate-800 rounded-2xl rounded-tl-none'}`}>
+                            {msg.role === 'model' && <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-600 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" /></div>}
+                            <div className={`px-4 py-3 max-w-sm md:max-w-md lg:max-w-lg shadow-sm ${msg.role === 'user' ? 'bg-violet-500 text-white rounded-2xl rounded-tr-none' : 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-200 rounded-2xl rounded-tl-none'}`}>
                                 <p className="text-sm whitespace-pre-wrap">{msg.parts[0].text}</p>
                             </div>
-                            {msg.role === 'user' && <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><UserIcon className="w-5 h-5 text-violet-500" /></div>}
+                            {msg.role === 'user' && <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-600 flex-shrink-0"><UserIcon className="w-5 h-5 text-violet-500 dark:text-violet-400" /></div>}
                         </div>
                     ))}
                     {isLoading && (
                         <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600" /></div>
-                            <div className="px-4 py-3 rounded-lg bg-slate-100">
+                            <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-600 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600 dark:text-sky-400" /></div>
+                            <div className="px-4 py-3 rounded-lg bg-slate-100 dark:bg-slate-700">
                                 <Loader />
                             </div>
                         </div>
@@ -128,7 +128,7 @@ Your primary role is to answer user questions based on the provided transcriptio
                 </div>
             </div>
              {error && <div className="text-red-500 p-2 text-center text-sm">{error}</div>}
-            <div className="p-4 sm:p-6 border-t border-slate-200/80">
+            <div className="p-4 sm:p-6 border-t border-slate-200/80 dark:border-slate-700/80">
                 <div className="flex items-center gap-3">
                     <input
                         type="text"
@@ -137,7 +137,7 @@ Your primary role is to answer user questions based on the provided transcriptio
                         onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                         placeholder={summary ? "Ask about the audio..." : "Ask me anything..."}
                         disabled={isLoading || !chat}
-                        className="flex-1 bg-white/80 border border-slate-300 rounded-lg px-4 py-2 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 focus:outline-none transition"
+                        className="flex-1 bg-white/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-sky-500 focus:outline-none transition"
                     />
                     <button
                         onClick={handleSend}

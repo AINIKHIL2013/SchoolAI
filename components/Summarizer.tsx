@@ -10,12 +10,12 @@ type ResultCardProps = {
 };
 
 const ResultCard = ({ title, icon, children }: ResultCardProps) => (
-    <div className="bg-white/50 rounded-lg p-4 border border-slate-200/80 shadow-sm">
-        <h3 className="text-lg font-semibold text-sky-600 flex items-center gap-2 mb-3">
+    <div className="bg-white/50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200/80 dark:border-slate-700/80 shadow-sm">
+        <h3 className="text-lg font-semibold text-sky-600 dark:text-sky-400 flex items-center gap-2 mb-3">
             {icon}
             {title}
         </h3>
-        <div className="text-slate-700 whitespace-pre-wrap font-light text-sm leading-relaxed max-h-48 overflow-y-auto">
+        <div className="text-slate-700 dark:text-slate-300 whitespace-pre-wrap font-light text-sm leading-relaxed max-h-48 overflow-y-auto">
             {children}
         </div>
     </div>
@@ -136,7 +136,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-6 bg-white/60 backdrop-blur-lg rounded-2xl border border-white/50 shadow-2xl shadow-slate-900/10">
+        <div className="w-full max-w-4xl mx-auto p-6 bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg rounded-2xl border border-white/50 dark:border-slate-700/50 shadow-2xl shadow-slate-900/10 dark:shadow-black/20">
             <div className="flex flex-col gap-6">
                 <div className="text-center">
                     <input
@@ -156,7 +156,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
                         <UploadIcon className="w-6 h-6" />
                         {audioFile ? audioFile.name : 'Upload Audio File'}
                     </label>
-                    <p className="text-sm text-slate-500 mt-2">Supports .mp3, .wav, .m4a, and more</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">Supports .mp3, .wav, .m4a, and more</p>
                 </div>
 
                 {audioFile && (
@@ -170,7 +170,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
                     </button>
                 )}
 
-                {error && <div className="text-red-600 bg-red-100 border border-red-300 p-3 rounded-lg text-center">{error}</div>}
+                {error && <div className="text-red-600 bg-red-100 border border-red-300 dark:bg-red-900/50 dark:text-red-300 dark:border-red-700 p-3 rounded-lg text-center">{error}</div>}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {transcription && (
