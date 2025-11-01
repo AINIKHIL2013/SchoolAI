@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI, Chat } from '@google/genai';
 import { SendIcon, UserIcon, BotIcon } from './icons';
@@ -105,22 +104,22 @@ Your primary role is to answer user questions based on the provided transcriptio
     };
     
     return (
-        <div className="w-full max-w-4xl mx-auto h-[70vh] flex flex-col bg-black/30 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl">
+        <div className="w-full max-w-4xl mx-auto h-[70vh] flex flex-col bg-white/60 backdrop-blur-lg rounded-2xl border border-white/50 shadow-2xl shadow-slate-900/10">
             <div className="flex-1 p-4 sm:p-6 overflow-y-auto">
                 <div className="space-y-4">
                     {messages.map((msg, index) => (
-                        <div key={index} className={`flex items-start gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
-                            {msg.role === 'model' && <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-400 flex-shrink-0"><BotIcon className="w-5 h-5 text-cyan-300" /></div>}
-                            <div className={`px-4 py-2 rounded-lg max-w-sm md:max-w-md lg:max-w-lg ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-200'}`}>
+                        <div key={index} className={`flex items-start gap-3 fade-in ${msg.role === 'user' ? 'justify-end' : ''}`}>
+                            {msg.role === 'model' && <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600" /></div>}
+                            <div className={`px-4 py-3 max-w-sm md:max-w-md lg:max-w-lg shadow-sm ${msg.role === 'user' ? 'bg-violet-500 text-white rounded-2xl rounded-tr-none' : 'bg-slate-100 text-slate-800 rounded-2xl rounded-tl-none'}`}>
                                 <p className="text-sm whitespace-pre-wrap">{msg.parts[0].text}</p>
                             </div>
-                            {msg.role === 'user' && <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center border border-indigo-400 flex-shrink-0"><UserIcon className="w-5 h-5 text-indigo-300" /></div>}
+                            {msg.role === 'user' && <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><UserIcon className="w-5 h-5 text-violet-500" /></div>}
                         </div>
                     ))}
                     {isLoading && (
                         <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-400 flex-shrink-0"><BotIcon className="w-5 h-5 text-cyan-300" /></div>
-                            <div className="px-4 py-3 rounded-lg bg-gray-700">
+                            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200 flex-shrink-0"><BotIcon className="w-5 h-5 text-sky-600" /></div>
+                            <div className="px-4 py-3 rounded-lg bg-slate-100">
                                 <Loader />
                             </div>
                         </div>
@@ -128,8 +127,8 @@ Your primary role is to answer user questions based on the provided transcriptio
                     <div ref={messagesEndRef} />
                 </div>
             </div>
-             {error && <div className="text-red-400 p-2 text-center text-sm">{error}</div>}
-            <div className="p-4 sm:p-6 border-t border-cyan-500/20">
+             {error && <div className="text-red-500 p-2 text-center text-sm">{error}</div>}
+            <div className="p-4 sm:p-6 border-t border-slate-200/80">
                 <div className="flex items-center gap-3">
                     <input
                         type="text"
@@ -138,12 +137,12 @@ Your primary role is to answer user questions based on the provided transcriptio
                         onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                         placeholder={summary ? "Ask about the audio..." : "Ask me anything..."}
                         disabled={isLoading || !chat}
-                        className="flex-1 bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+                        className="flex-1 bg-white/80 border border-slate-300 rounded-lg px-4 py-2 text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 focus:outline-none transition"
                     />
                     <button
                         onClick={handleSend}
                         disabled={isLoading || !input.trim() || !chat}
-                        className="bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-600 disabled:cursor-not-allowed text-white p-2.5 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.4)]"
+                        className="bg-sky-500 hover:bg-sky-600 disabled:bg-slate-400 disabled:cursor-not-allowed text-white p-2.5 rounded-full transition-all duration-300 transform hover:scale-110 active:scale-100 shadow-md shadow-sky-500/40"
                     >
                         <SendIcon className="w-5 h-5" />
                     </button>

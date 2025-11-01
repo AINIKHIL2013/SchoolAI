@@ -10,12 +10,12 @@ type ResultCardProps = {
 };
 
 const ResultCard = ({ title, icon, children }: ResultCardProps) => (
-    <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 backdrop-blur-sm">
-        <h3 className="text-lg font-semibold text-cyan-300 flex items-center gap-2 mb-3">
+    <div className="bg-white/50 rounded-lg p-4 border border-slate-200/80 shadow-sm">
+        <h3 className="text-lg font-semibold text-sky-600 flex items-center gap-2 mb-3">
             {icon}
             {title}
         </h3>
-        <div className="text-gray-300 whitespace-pre-wrap font-light text-sm leading-relaxed max-h-48 overflow-y-auto">
+        <div className="text-slate-700 whitespace-pre-wrap font-light text-sm leading-relaxed max-h-48 overflow-y-auto">
             {children}
         </div>
     </div>
@@ -136,7 +136,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-6 bg-black/30 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl">
+        <div className="w-full max-w-4xl mx-auto p-6 bg-white/60 backdrop-blur-lg rounded-2xl border border-white/50 shadow-2xl shadow-slate-900/10">
             <div className="flex flex-col gap-6">
                 <div className="text-center">
                     <input
@@ -149,28 +149,28 @@ const Summarizer: React.FC<SummarizerProps> = ({
                     />
                     <label
                         htmlFor="audio-upload"
-                        className={`inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 cursor-pointer w-full sm:w-auto ${
-                            isLoading ? 'bg-gray-600 cursor-not-allowed' : 'bg-cyan-600 hover:bg-cyan-500 shadow-[0_0_15px_rgba(0,255,255,0.4)]'
+                        className={`inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 cursor-pointer w-full sm:w-auto transform hover:scale-105 active:scale-95 shadow-md ${
+                            isLoading ? 'bg-slate-400 cursor-not-allowed' : 'bg-sky-500 hover:bg-sky-600 shadow-sky-500/30'
                         }`}
                     >
                         <UploadIcon className="w-6 h-6" />
                         {audioFile ? audioFile.name : 'Upload Audio File'}
                     </label>
-                    <p className="text-sm text-gray-400 mt-2">Supports .mp3, .wav, .m4a, and more</p>
+                    <p className="text-sm text-slate-500 mt-2">Supports .mp3, .wav, .m4a, and more</p>
                 </div>
 
                 {audioFile && (
                     <button
                         onClick={onProcessAudio}
                         disabled={isLoading}
-                        className="flex items-center justify-center gap-3 w-full bg-indigo-600 hover:bg-indigo-500 disabled:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(129,140,248,0.4)]"
+                        className="flex items-center justify-center gap-3 w-full bg-violet-500 hover:bg-violet-600 disabled:bg-slate-400 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md shadow-violet-500/30"
                     >
                         {isLoading && loadingStep !== 'Generating speech...' ? <Loader /> : <SparklesIcon className="w-6 h-6" />}
                         {isLoading && loadingStep !== 'Generating speech...' ? loadingStep : 'Transcribe & Summarize'}
                     </button>
                 )}
 
-                {error && <div className="text-red-400 bg-red-900/50 border border-red-500 p-3 rounded-lg text-center">{error}</div>}
+                {error && <div className="text-red-600 bg-red-100 border border-red-300 p-3 rounded-lg text-center">{error}</div>}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {transcription && (
@@ -191,7 +191,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
                         <button
                             onClick={playSummaryAudio}
                             disabled={isLoading && loadingStep === 'Generating speech...'}
-                            className="flex-1 flex items-center justify-center gap-3 bg-green-600 hover:bg-green-500 disabled:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(74,222,128,0.4)]"
+                            className="flex-1 flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-400 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md shadow-emerald-500/30"
                         >
                             {isLoading && loadingStep === 'Generating speech...' ? <Loader/> : (isPlaying ? <StopIcon className="w-6 h-6"/> : <PlayIcon className="w-6 h-6" />) }
                              {isLoading && loadingStep === 'Generating speech...' ? 'Generating...' : (isPlaying ? 'Stop' : 'Play Summary Audio')}
@@ -199,7 +199,7 @@ const Summarizer: React.FC<SummarizerProps> = ({
                         {summaryAudio && (
                              <button
                                 onClick={handleDownload}
-                                className="flex-1 flex items-center justify-center gap-3 bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(2,132,199,0.4)]"
+                                className="flex-1 flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md shadow-blue-500/30"
                             >
                                 <DownloadIcon className="w-6 h-6" />
                                 Download Audio

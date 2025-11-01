@@ -16,8 +16,45 @@
   }
 }
 </script>
+<style>
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  body {
+    background: linear-gradient(-45deg, #f0f9ff, #f3e8ff, #e0f2fe, #f1f5f9);
+    background-size: 400% 400%;
+    animation: gradientAnimation 18s ease infinite;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+      width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+      background: rgba(226, 232, 240, 0.5); /* slate-200 */
+  }
+  ::-webkit-scrollbar-thumb {
+      background: #38bdf8; /* sky-400 */
+      border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+      background: #0ea5e9; /* sky-500 */
+  }
+
+  /* Chat message animation */
+  @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+  }
+</style>
 </head>
-  <body class="bg-gray-900 text-gray-100">
+  <body class="text-slate-800">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
