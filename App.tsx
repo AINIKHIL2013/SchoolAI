@@ -186,7 +186,7 @@ const App: React.FC = () => {
             Contributors
           </h3>
           <p className="font-mono text-xs text-slate-500 dark:text-slate-400">
-            Dhanajeyan • Nikhil • Stephen • Skanda • Mugunth • Adithya
+            <span className="font-bold text-sky-500 dark:text-sky-400">Nikhil</span> • Dhanajeyan • Stephen • Skanda • Mugunth • Adithya
           </p>
         </div>
       </footer>
